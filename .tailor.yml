@@ -1,0 +1,4 @@
+include:
+    - SpaceIn
+exclude:
+    - SpaceIn/Pods      # Ignore Swift files under "Pods/"
