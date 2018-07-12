@@ -9,13 +9,15 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"stepDefinations"},
-        tags = {"~@Ignore"},
+        tags = {"@NeedTo"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"
-        })
+        },
+        plugin = {"html:target/cucumber-reports/cucumber-pretty"}
+)
 public class TestRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
 

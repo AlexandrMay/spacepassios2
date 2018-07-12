@@ -1,11 +1,13 @@
 package stepDefinations;
 
 import Screens.OnboardingScreen;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumberOptions.DriverRunner;
-
+import org.openqa.selenium.OutputType;
 
 
 public class app_starting extends DriverRunner {
@@ -28,5 +30,19 @@ public class app_starting extends DriverRunner {
     public void driver_is_off() throws Throwable {
         driver.quit();
     }
+
+    @After
+    public void screenshot(Scenario scenario) {
+        if (scenario.isFailed()) {
+            try {
+                byte[] screenshot = driver
+                        .getScreenshotAs(OutputType.BYTES);
+                scenario.embed(screenshot, "image/png");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }
