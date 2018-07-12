@@ -1,11 +1,15 @@
 package cucumberOptions;
 
 
+import Properties.Caps;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.OutputType;
 
-public class Hooks extends DriverRunner {
+public class Hooks extends Caps {
+
+    private static IOSDriver driver;
 
     @After
     public void screenshot(Scenario scenario) {
